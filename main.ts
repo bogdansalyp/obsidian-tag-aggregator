@@ -181,60 +181,7 @@ export default class TagAggregatorPlugin extends Plugin {
 					}
 				}
 				if (valid) {
-					if (!this.settings.listparagraph) {
-						// Add all paragraphs
-						listParagraphs.push(paragraph);
-					} else {
-						// Add paragraphs and the items of a list
-						let listItems: string[] = Array();
-						let itemText = "";
-
-						paragraph.split('\n\s*\n').forEach((line) => {
-							let isList = false;
-							isList = line.search(/(\s*[\-\+\*]){1}|([0-9]\.){1}\s+/) != -1
-	
-							if (!isList) {
-								// Add normal paragraphs
-								listParagraphs.push(line);
-								itemText = "";
-							} else {
-								line.split('\n').forEach((itemLine) => {
-									// Get the item's level
-									let level = 0;
-									const endIndex = itemLine.search(/[\-\+\*]{1}|([0-9]\.){1}\s+/);
-									const tabText = itemLine.slice(0, endIndex);
-									const tabs = tabText.match(/\t/g);
-									if (tabs) {
-										level = tabs.length;
-									}
-									// Get items tree
-									if (level == 0) {
-										if (itemText != "") {
-											listItems.push(itemText);
-											itemText = "";
-										}
-										itemText = itemText.concat(itemLine + "\n");
-									} else if (this.settings.includechildren && level > 0 && itemText != "") {
-										itemText = itemText.concat(itemLine + "\n");
-									}
-								});
-							}
-						});
-						if (itemText != "") {
-							listItems.push(itemText);
-							itemText = "";
-						}
-
-						// Check tags on the items
-						listItems.forEach((line) => {
-							listTags = line.match(/#[\p{L}0-9_\-/#]+/gu);
-							if (listTags != null && listTags.length > 0) {
-								if (this.isValidText(listTags, tags, include, exclude)) {
-									listParagraphs.push(line);
-								}
-							}
-						});
- 					}
+					listParagraphs.push(paragraph);
 				}
 			})
 

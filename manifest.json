@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "tag-aggregator",
+	"name": "Tag Aggregator",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Allows users to create aggregation of tagged text blocks throughout their vault.",
+	"author": "Bogdan Salyp",
+	"authorUrl": "https://github.com/bogdansalyp",
 	"isDesktopOnly": false
 }

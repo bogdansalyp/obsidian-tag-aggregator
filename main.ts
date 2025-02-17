@@ -141,10 +141,7 @@ export default class TagAggregatorPlugin extends Plugin {
 			const cache = this.app.metadataCache.getFileCache(file);
 			const tagsInFile = getAllTags(cache);
 
-			if (validTags.some((value) => tagsInFile.includes(value))) {
-				return true;
-			}
-			return false;
+			return validTags.some((tag) => tagsInFile?.includes(tag))
         });
 
 		// Sort files alphabetically

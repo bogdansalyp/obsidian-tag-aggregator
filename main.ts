@@ -222,7 +222,7 @@ export default class TagAggregatorPlugin extends Plugin {
 		// Add Summary
 		if (summary != "") {
 			let summaryContainer = createEl("div");
-			await MarkdownRenderer.renderMarkdown(summary, summaryContainer, this.app.workspace.getActiveFile()?.path, null);
+			await MarkdownRenderer.render(this.app, summary, summaryContainer, this.app.workspace.getActiveFile()?.path, null);
 			element.replaceWith(summaryContainer);
 		} else {
 			this.createEmptySummary(element);
